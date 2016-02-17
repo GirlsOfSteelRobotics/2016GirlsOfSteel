@@ -4,6 +4,7 @@ import org.usfirst.frc.team3504.robot.Robot;
 import org.usfirst.frc.team3504.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -14,9 +15,10 @@ public class Flap extends Subsystem {
 
 	private CANTalon flapTalon;
 	private static final double TOP_POSITION = 0;
-	private static final double BOTTOM_POSITION = .3; 
-	private static final double MIDDLE_POSITION = .15; 
+	private static final double BOTTOM_POSITION = -.25; 
+	private static final double MIDDLE_POSITION = -.13; 
 	private static final int INCREMENT = 100;
+	private static final int ENCODER_TICKS = 4096;
 
 
 	public Flap(){
@@ -26,11 +28,12 @@ public class Flap extends Subsystem {
 		flapTalon.ConfigRevLimitSwitchNormallyOpen(false);
 		flapTalon.enableBrakeMode(true);
 
+		flapTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		flapTalon.setEncPosition(0);
 		flapTalon.setProfile(0);
 		flapTalon.setF(0.0);
-		flapTalon.setP(0.5);
-		flapTalon.setI(0.0); 
+		flapTalon.setP(0.25);
+		flapTalon.setI(0.0025); 
 		flapTalon.setD(0.0);
 
 		flapTalon.changeControlMode(CANTalon.TalonControlMode.Position);
@@ -49,9 +52,9 @@ public class Flap extends Subsystem {
 	
 	public void incrementGoal(boolean up){
 		if(up)
-			flapTalon.set((flapTalon.getEncPosition() + INCREMENT) / 1024); 
+			flapTalon.set((flapTalon.getEncPosition() + INCREMENT) / ENCODER_TICKS); 
 		else
-			flapTalon.set((flapTalon.getEncPosition() - INCREMENT) / 1024);
+			flapTalon.set((flapTalon.getEncPosition() - INCREMENT) / ENCODER_TICKS);
 	}
 	
 	public void flapToTop(){
@@ -67,7 +70,7 @@ public class Flap extends Subsystem {
 	}
 
 	public void stop(){
-		flapTalon.set(flapTalon.getEncPosition() / 1024); 
+		flapTalon.set(flapTalon.getEncPosition() / ENCODER_TICKS); 
 	}
 
 
