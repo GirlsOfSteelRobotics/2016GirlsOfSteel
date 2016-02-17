@@ -131,6 +131,7 @@ public class Robot extends IterativeRobot {
 		shifters.shiftRight(Shifters.Speed.kLow);
 		
 		Robot.chassis.resetEncoderDistance();
+		
     }
 
     /**

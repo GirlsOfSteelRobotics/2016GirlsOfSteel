@@ -5,6 +5,7 @@ import org.usfirst.frc.team3504.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Flap extends Subsystem {
 
 	public Flap(){
 		flapTalon = new CANTalon(RobotMap.FLAP_MOTOR);
+		LiveWindow.addActuator("Flap", "flapTalon", flapTalon);
 		flapTalon.ConfigFwdLimitSwitchNormallyOpen(false);
 		flapTalon.ConfigRevLimitSwitchNormallyOpen(false);
 		flapTalon.enableBrakeMode(true);
@@ -33,6 +35,8 @@ public class Flap extends Subsystem {
 
 		flapTalon.changeControlMode(CANTalon.TalonControlMode.Position);
 		flapTalon.set(0);
+		
+		
 	}
 
 	public void initDefaultCommand() {
