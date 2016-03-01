@@ -7,35 +7,34 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TestFlapDown extends Command {
+public class FlapToMiddle extends Command {
 
-    public TestFlapDown() {
+    public FlapToMiddle() {
+    	requires(Robot.flap); 
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.flap);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.flap.flapToMiddle();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.flap.setTalon(-0.3);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.flap.setTalon(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
