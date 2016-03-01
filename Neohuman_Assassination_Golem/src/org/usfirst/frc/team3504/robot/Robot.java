@@ -30,7 +30,6 @@ public class Robot extends IterativeRobot {
 	public static Shifters shifters;
 	public static Flap flap;
 	public static Claw claw;
-	//hello
 	public static Pivot pivot;
 	public static Camera camera;
 	public static LEDLights ledlights; 
