@@ -133,6 +133,7 @@ public class Robot extends IterativeRobot {
 		// Start the robot out in low gear when changing from auto to tele-op
         SmartDashboard.putBoolean("Top Flap LS", Robot.flap.getTopLimitSwitch());
         SmartDashboard.putBoolean("Bottom Flap LS", Robot.flap.getBottomLimitSwitch());
+        SmartDashboard.putNumber("Flap Talon Encoder", Robot.flap.getFlapEncoder());
     }
     
     /**
