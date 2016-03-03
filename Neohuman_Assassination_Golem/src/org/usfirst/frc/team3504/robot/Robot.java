@@ -117,7 +117,7 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
 		
-        // Start the robot out in low gear when changing from auto to tele-op
+        // Start the robot out in low gear when changing from auto to teleop
 		shifters.shiftLeft(Shifters.Speed.kLow);
 		shifters.shiftRight(Shifters.Speed.kLow);
 		

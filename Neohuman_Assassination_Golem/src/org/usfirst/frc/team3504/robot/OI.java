@@ -73,6 +73,7 @@ public class OI {
 	private JoystickButton shooterShoot;
 	private JoystickButton shooterCollect;
 	private JoystickButton shooterStop;
+
 	
 	private JoystickButton spinShooterWheels;
 	
@@ -123,6 +124,7 @@ public class OI {
 		flapDown.whileHeld(new FlapToBottom());
 		flapMiddle = new JoystickButton(buttonBoard, 9);
 		flapMiddle.whileHeld(new FlapToMiddle());
+
 		
 		//flapUpRocker = new JoystickButton(buttonBoard, 5);
 		//flapUpRocker.whileHeld(new FlapUp(true)); //true because using rocker
@@ -135,7 +137,7 @@ public class OI {
 		pivotDown = new JoystickButton(buttonBoard, 2);
 		pivotDown.whileHeld(new PivotDown());
 		pivotMiddle = new JoystickButton(buttonBoard, 4);
-		pivotMiddle.whenPressed(new PivotMiddle());
+		pivotMiddle.whileHeld(new PivotMiddle());
 		
 		//defenses: skipped 2 numbers for shooter
 		//portcullis = new JoystickButton(buttonBoard, 12);
